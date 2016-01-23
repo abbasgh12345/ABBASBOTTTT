@@ -743,7 +743,7 @@ function is_momod2(user_id, group_id)
 end
 
 -- Returns the name of the sender
-function kick_user(user_id, chat_id) 
+function sik_user(user_id, chat_id) 
   if tonumber(user_id) == tonumber(our_id) then -- Ignore bot
     return
   end
@@ -756,7 +756,7 @@ function kick_user(user_id, chat_id)
 end
 
 -- Ban
-function ban_user(user_id, chat_id)
+function siktir_user(user_id, chat_id)
   if tonumber(user_id) == tonumber(our_id) then -- Ignore bot
     return
   end
@@ -770,7 +770,7 @@ function ban_user(user_id, chat_id)
   kick_user(user_id, chat_id)
 end
 -- Global ban
-function banall_user(user_id)  
+function sikever_user(user_id)  
   if tonumber(user_id) == tonumber(our_id) then -- Ignore bot
     return
   end
@@ -782,7 +782,7 @@ function banall_user(user_id)
   redis:sadd(hash, user_id)
 end
 -- Global unban
-function unbanall_user(user_id)
+function unsikever_user(user_id)
   --Save on redis  
   local hash =  'gbanned'
   redis:srem(hash, user_id)
@@ -805,7 +805,7 @@ function is_gbanned(user_id)
 end
 
 -- Returns chat_id ban list
-function ban_list(chat_id)
+function siktir_list(chat_id)
   local hash =  'banned:'..chat_id
   local list = redis:smembers(hash)
   local text = "Ban list !\n\n"
@@ -816,7 +816,7 @@ function ban_list(chat_id)
 end
 
 -- Returns globally ban list
-function banall_list() 
+function sikever_list() 
   local hash =  'gbanned'
   local list = redis:smembers(hash)
   local text = "global bans !\n\n"
@@ -837,7 +837,7 @@ function get_message_callback_id(extra, success, result)
 end
 
 -- kick by reply for mods and owner
-function Kick_by_reply(extra, success, result)
+function sik_by_reply(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
@@ -853,7 +853,7 @@ function Kick_by_reply(extra, success, result)
 end
 
 -- Kick by reply for admins
-function Kick_by_reply_admins(extra, success, result)
+function sik_by_reply_admins(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
@@ -869,14 +869,14 @@ function Kick_by_reply_admins(extra, success, result)
 end
 
 --Ban by reply for admins
-function ban_by_reply(extra, success, result)
+function siktir_by_reply(extra, success, result)
   if result.to.type == 'chat' then
   local chat = 'chat#id'..result.to.id
   if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
       return "I won't ban myself"
   end
   if is_momod2(result.from.id, result.to.id) then -- Ignore mods,owner,admin
-    return "you can't kick mods,owner and admins"
+    return "i can not do this"
   end
   ban_user(result.from.id, result.to.id)
   send_large_msg(chat, "User "..result.from.id.." Banned")
@@ -886,7 +886,7 @@ function ban_by_reply(extra, success, result)
 end
 
 -- Ban by reply for admins
-function ban_by_reply_admins(extra, success, result)
+function siktir_by_reply_admins(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
@@ -903,7 +903,7 @@ function ban_by_reply_admins(extra, success, result)
 end
 
 -- Unban by reply
-function unban_by_reply(extra, success, result) 
+function unsiktir_by_reply(extra, success, result) 
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
