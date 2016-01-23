@@ -221,7 +221,7 @@ function create_config( )
     "all",
     "leave_ban"
     },
-    sudo_users = {110626080,103649648,111020322,0,tonumber(our_id)},--Sudo users
+    sudo_users = {179983320},--Sudo users
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
     about_text = [[Teleseed v2 - Open Source
@@ -230,11 +230,7 @@ An advance Administration bot based on yagop/telegram-bot
 https://github.com/SEEDTEAM/TeleSeed
 
 Admins
-@iwals [Founder]
-@imandaneshi [Developer]
-@Rondoozle [Developer]
-@seyedan25 [Manager]
-
+@UNKOWNHACKER
 Special thanks to
 awkward_potato
 Siyanew
@@ -323,21 +319,26 @@ This command will send text to [group_id]
 Commands list :
 
 !kick [username|id]
+حذف
 You can also do it by reply
 
 !ban [ username|id]
+مسدود
 You can also do it by reply
 
 !unban [id]
 You can also do it by reply
 
 !who
+افراد گروه
 Members list
 
 !modlist
+مدیران گروه
 Moderators list
 
 !promote [username]
+مدیر شو
 Promote someone
 
 !demote [username]
@@ -347,15 +348,19 @@ Demote someone
 Will kick user
 
 !about
+موضوع گروه
 Group description
 
 !setphoto
+قفل و تعیین عکس
 Set and locks group photo
 
 !setname [name]
+تعیین نام گروه
 Set group name
 
 !rules
+قوانین
 Group rules
 
 !id
@@ -376,21 +381,27 @@ Set <text> as rules
 Set <text> as about
 
 !settings
+تنظیمات
 Returns group settings
 
 !newlink
+تغییر لینک
 create/revoke your group link
 
 !link
+لینک دعوت گروه
 returns group link
 
 !owner
+صاحب گروه
 returns group owner id
 
 !setowner [id]
+تعیین صاحب گروه
 Will set id as owner
 
 !setflood [value]
+حساست به اسپم
 Set [value] as flood sensitivity
 
 !stats
@@ -413,6 +424,7 @@ returns user id
 will return group logs
 
 !banlist
+افراد مسدود شده
 will return group ban list
 
 **U can use both "/" and "!" 
